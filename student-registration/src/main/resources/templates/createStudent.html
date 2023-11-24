@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Student</title>
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+<h1 class="text-center">Create Student</h1>
+  <form th:action="@{/auca/create-student}" method="POST" id="academicUnitForm">
+    <div class="form-row align-items-center">
+      <div class="form-group col-md-4 p-3">
+        <label for="name">Student Name</label>
+        <input type="text" class="form-control" name="name" id="name" required>
+      </div>
+      <div class="form-group col-md-4 p-3">
+        <label for="code">Student Code</label>
+        <input type="text" class="form-control" id="code" name="code" required>
+      </div>
+      <div class="form-group col-md-4 p-3">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="dob" required>
+      </div>
+      <div class="form-group col-md-4 p-3">
+        <label>Department</label>
+        <select name="dept" class="form-control" id="unitType">
+          <option value="none" selected>-- Select a Department --</option>
+          <option th:each="department : ${departments}" th:value="${department.code}" th:text="${department.name}"></option>
+      </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary ms-3">Create Student</button>
+  </form>
+</body>
+</html>
